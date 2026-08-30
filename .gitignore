@@ -1,0 +1,38 @@
+# ~/.claude is mostly machine-local runtime state: conversation transcripts,
+# caches, lock files, session keys, downloaded plugins. Listing those one by one
+# would mean silently tracking whatever Claude Code decides to write next, so
+# this file denies everything by default and re-includes only the hand-written
+# configuration below.
+
+*
+
+# Git will not look inside an ignored directory, so each tracked directory needs
+# both the directory itself and its contents un-ignored.
+!/.gitignore
+!/README.md
+!/CLAUDE.md
+!/settings.json.example
+!/statusline.sh
+!/statusline-command.sh
+
+!/agents/
+!/agents/**
+!/commands/
+!/commands/**
+!/hooks/
+!/hooks/**
+!/output-styles/
+!/output-styles/**
+!/skills/
+!/skills/**
+
+# Belt and braces: these carry credentials or private conversation content, and
+# these rules come last so they win over any allow rule added above by mistake.
+/settings.json
+/settings.local.json
+/.credentials.json
+/history.jsonl
+/projects/
+/sessions/
+/paste-cache/
+/file-history/
